@@ -46,10 +46,28 @@ contract Greeter {
         }
     }
 
+    function switch_in_assembly(uint x, uint y) public pure returns (uint) {
+        assembly {
+            let x := 34
+                    
+            switch lt(x, 30)
+            case true {
+                // do something
+            }
+            case false {
+                // do something els
+            }
+            default {
+                // this is not allowed
+            }
+        } 
+    }
+
     function for_loop_solidity(uint n, uint value) public pure returns(uint) {     
         for ( uint i = 0; i < n; i++ ) {
             value = 2 * value;
-        }    return value;
+        }    
+        return value;
     }
 
     function greet() public view returns (string memory) {
